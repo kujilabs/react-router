@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	exports.DefaultRoute = __webpack_require__(1);
+	exports.DefaultRoute = __webpack_require__(22);
 	exports.Link = __webpack_require__(2);
 	exports.NotFoundRoute = __webpack_require__(3);
 	exports.Redirect = __webpack_require__(4);
@@ -90,51 +90,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var assign = __webpack_require__(33);
+	var ReactPropTypes = __webpack_require__(21).PropTypes;
+	var Route = __webpack_require__(17);
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var PropTypes = assign({}, ReactPropTypes, {
 
-	var PropTypes = __webpack_require__(22);
-	var RouteHandler = __webpack_require__(6);
-	var Route = __webpack_require__(5);
-
-	/**
-	 * A <DefaultRoute> component is a special kind of <Route> that
-	 * renders when its parent matches but none of its siblings do.
-	 * Only one such route may be used at any given level in the
-	 * route hierarchy.
-	 */
-
-	var DefaultRoute = (function (_Route) {
-	  function DefaultRoute() {
-	    _classCallCheck(this, DefaultRoute);
-
-	    if (_Route != null) {
-	      _Route.apply(this, arguments);
+	  /**
+	   * Indicates that a prop should be falsy.
+	   */
+	  falsy: function falsy(props, propName, componentName) {
+	    if (props[propName]) {
+	      return new Error("<" + componentName + "> should not have a \"" + propName + "\" prop");
 	    }
-	  }
+	  },
 
-	  _inherits(DefaultRoute, _Route);
+	  /**
+	   * Indicates that a prop should be a Route object.
+	   */
+	  route: ReactPropTypes.instanceOf(Route),
 
-	  return DefaultRoute;
-	})(Route);
+	  /**
+	   * Indicates that a prop should be a Router object.
+	   */
+	  //router: ReactPropTypes.instanceOf(Router) // TODO
+	  router: ReactPropTypes.func
 
-	// TODO: Include these in the above class definition
-	// once we can use ES7 property initializers.
-	// https://github.com/babel/babel/issues/619
+	});
 
-	DefaultRoute.propTypes = {
-	  name: PropTypes.string,
-	  path: PropTypes.falsy,
-	  children: PropTypes.falsy,
-	  handler: PropTypes.func.isRequired
-	};
-
-	DefaultRoute.defaultProps = {
-	  handler: RouteHandler
-	};
-
-	module.exports = DefaultRoute;
+	module.exports = PropTypes;
 
 /***/ },
 /* 2 */
@@ -150,7 +134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(21);
 	var assign = __webpack_require__(33);
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 
 	function isLeftClickEvent(event) {
 	  return event.button === 0;
@@ -289,7 +273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 	var RouteHandler = __webpack_require__(6);
 	var Route = __webpack_require__(5);
 
@@ -342,7 +326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 	var Route = __webpack_require__(5);
 
 	/**
@@ -394,7 +378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(21);
 	var invariant = __webpack_require__(34);
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 	var RouteHandler = __webpack_require__(6);
 
 	/**
@@ -492,7 +476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(21);
 	var ContextWrapper = __webpack_require__(23);
 	var assign = __webpack_require__(33);
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 
 	var REF_NAME = "__routeHandler__";
 
@@ -1018,12 +1002,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	/**
 	 * A scroll behavior that always scrolls to the top of the page
 	 * after a transition.
 	 */
+	"use strict";
+
 	var ScrollToTopBehavior = {
 
 	  updateScrollPosition: function updateScrollPosition() {
@@ -1076,7 +1060,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 
 	var warning = __webpack_require__(36);
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 
 	function deprecatedMethod(routerMethodName, fn) {
 	  return function () {
@@ -1160,7 +1144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 
 	var warning = __webpack_require__(36);
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 
 	function deprecatedMethod(routerMethodName, fn) {
 	  return function () {
@@ -1457,13 +1441,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* jshint -W084 */
 	"use strict";
 
-	/* jshint -W084 */
 	var React = __webpack_require__(21);
 	var assign = __webpack_require__(33);
 	var warning = __webpack_require__(36);
-	var DefaultRoute = __webpack_require__(1);
+	var DefaultRoute = __webpack_require__(22);
 	var NotFoundRoute = __webpack_require__(3);
 	var Redirect = __webpack_require__(4);
 	var Route = __webpack_require__(17);
@@ -1543,9 +1527,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* jshint -W058 */
 	"use strict";
 
-	/* jshint -W058 */
 	var React = __webpack_require__(21);
 	var warning = __webpack_require__(36);
 	var invariant = __webpack_require__(34);
@@ -1560,7 +1544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var createRoutesFromReactChildren = __webpack_require__(18);
 	var isReactChildren = __webpack_require__(27);
 	var Transition = __webpack_require__(28);
-	var PropTypes = __webpack_require__(22);
+	var PropTypes = __webpack_require__(1);
 	var Redirect = __webpack_require__(29);
 	var History = __webpack_require__(14);
 	var Cancellation = __webpack_require__(30);
@@ -1882,7 +1866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          toRoutes = nextRoutes;
 	        }
 
-	        var transition = new Transition(path, Router.replaceWith.bind(Router, path));
+	        var transition = new Transition(path, Router.replaceWith.bind(Router, path), options.transitionContext);
 	        pendingTransition = transition;
 
 	        var fromComponents = mountedComponents.slice(prevRoutes.length - fromRoutes.length);
@@ -2125,35 +2109,51 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	var assign = __webpack_require__(33);
-	var ReactPropTypes = __webpack_require__(21).PropTypes;
-	var Route = __webpack_require__(17);
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	var PropTypes = assign({}, ReactPropTypes, {
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-	  /**
-	   * Indicates that a prop should be falsy.
-	   */
-	  falsy: function falsy(props, propName, componentName) {
-	    if (props[propName]) {
-	      return new Error("<" + componentName + "> may not have a \"" + propName + "\" prop");
+	var PropTypes = __webpack_require__(1);
+	var RouteHandler = __webpack_require__(6);
+	var Route = __webpack_require__(5);
+
+	/**
+	 * A <DefaultRoute> component is a special kind of <Route> that
+	 * renders when its parent matches but none of its siblings do.
+	 * Only one such route may be used at any given level in the
+	 * route hierarchy.
+	 */
+
+	var DefaultRoute = (function (_Route) {
+	  function DefaultRoute() {
+	    _classCallCheck(this, DefaultRoute);
+
+	    if (_Route != null) {
+	      _Route.apply(this, arguments);
 	    }
-	  },
+	  }
 
-	  /**
-	   * Indicates that a prop should be a Route object.
-	   */
-	  route: ReactPropTypes.instanceOf(Route),
+	  _inherits(DefaultRoute, _Route);
 
-	  /**
-	   * Indicates that a prop should be a Router object.
-	   */
-	  //router: ReactPropTypes.instanceOf(Router) // TODO
-	  router: ReactPropTypes.func
+	  return DefaultRoute;
+	})(Route);
 
-	});
+	// TODO: Include these in the above class definition
+	// once we can use ES7 property initializers.
+	// https://github.com/babel/babel/issues/619
 
-	module.exports = PropTypes;
+	DefaultRoute.propTypes = {
+	  name: PropTypes.string,
+	  path: PropTypes.falsy,
+	  children: PropTypes.falsy,
+	  handler: PropTypes.func.isRequired
+	};
+
+	DefaultRoute.defaultProps = {
+	  handler: RouteHandler
+	};
+
+	module.exports = DefaultRoute;
 
 /***/ },
 /* 23 */
@@ -2203,11 +2203,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	/**
 	 * Actions that modify the URL.
 	 */
+	"use strict";
+
 	var LocationActions = {
 
 	  /**
@@ -2489,9 +2489,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	/* jshint -W058 */
+
+	"use strict";
 
 	var Cancellation = __webpack_require__(30);
 	var Redirect = __webpack_require__(29);
@@ -2502,11 +2502,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * The willTransitionTo and willTransitionFrom handlers receive
 	 * an instance of this class as their first argument.
 	 */
-	function Transition(path, retry) {
+	function Transition(path, retry, context) {
 	  this.path = path;
 	  this.abortReason = null;
 	  // TODO: Change this to router.retryTransition(transition)
 	  this.retry = retry.bind(this);
+	  this.context = context;
 	}
 
 	Transition.prototype.abort = function (reason) {
@@ -2569,11 +2570,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	/**
 	 * Encapsulates a redirect to the given route.
 	 */
+	"use strict";
+
 	function Redirect(to, params, query) {
 	  this.to = to;
 	  this.params = params;
@@ -2586,12 +2587,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	/**
 	 * Represents a cancellation caused by navigating away
 	 * before the previous transition has fully resolved.
 	 */
+	"use strict";
+
 	function Cancellation() {}
 
 	module.exports = Cancellation;
@@ -2703,6 +2704,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule Object.assign
+	 */
+
+	// https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign
+
 	"use strict";
 
 	function assign(target, sources) {
@@ -2737,22 +2751,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = assign;
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
-	 * Copyright 2014-2015, Facebook, Inc.
+	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
 	 *
 	 * This source code is licensed under the BSD-style license found in the
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule Object.assign
+	 * @providesModule invariant
 	 */
-
-	// https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -2792,6 +2805,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = invariant;
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
@@ -2800,12 +2818,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule invariant
+	 * @providesModule ExecutionEnvironment
 	 */
 
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
+	/*jslint evil: true */
 
 	"use strict";
 
@@ -2832,22 +2848,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ExecutionEnvironment;
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
-	 * Copyright 2013-2015, Facebook, Inc.
+	 * Copyright 2014-2015, Facebook, Inc.
 	 * All rights reserved.
 	 *
 	 * This source code is licensed under the BSD-style license found in the
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule ExecutionEnvironment
+	 * @providesModule warning
 	 */
-
-	/*jslint evil: true */
-
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -2894,16 +2909,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = warning;
-	/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule warning
-	 */
 
 /***/ },
 /* 37 */
@@ -2971,8 +2976,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
@@ -2983,6 +2986,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * @providesModule emptyFunction
 	 */
+
+	"use strict";
 
 	function makeEmptyFunction(arg) {
 	  return function () {
@@ -3014,9 +3019,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	// Load modules
+
+	"use strict";
 
 	var Stringify = __webpack_require__(42);
 	var Parse = __webpack_require__(43);
@@ -3034,9 +3039,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	// Load modules
+
+	"use strict";
 
 	var Utils = __webpack_require__(44);
 
@@ -3127,9 +3132,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	// Load modules
+
+	"use strict";
 
 	var Utils = __webpack_require__(44);
 
@@ -3280,11 +3285,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
 	// Load modules
 
 	// Declare internals
+
+	"use strict";
 
 	var internals = {};
 
@@ -3404,3 +3409,4 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ }
 /******/ ])
 });
+;
